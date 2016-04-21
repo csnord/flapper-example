@@ -28,3 +28,6 @@ Added a link field, as well as reflecting user input in the list.
 ####File: app.js
 * Added function on controller: incrementUpvotes
 * Added capability to add a new title, as well as a link
+
+###3 - Adding Some Style
+Added bootstrap from a CDN. Styled up the index.html code with bootstrap.
