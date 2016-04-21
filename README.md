@@ -31,3 +31,10 @@ Added a link field, as well as reflecting user input in the list.
 
 ###3 - Adding Some Style
 Added bootstrap from a CDN. Styled up the index.html code with bootstrap.
+
+###4 - Angular Services
+Added a factory/service.
+Was getting: Error: $injector:unpr Unknown Provider
+I had not used var app = angular.module('flapperNews', []); but had overwritten things by using:
+* angular.module('flapperNews', []).controller ... which should now be app.controller ...
+* angular.module('flapperNews', []).factory ... which should now be app.factory ...
