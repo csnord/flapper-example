@@ -45,7 +45,7 @@ Lots here, got excited and combined two "chapters"! We..
 * Added a config() - because we have added 'ui.router'.
 * Added state with $stateProvider and $urlRouterProvider.
 * Used **otherwise()** to redirect unspecified routes to "home.html"
-* Inlined home template: <script type="text/ng-template" id="/home.html">
-* Inlined posts template: <script type="text/ng-template" id="/posts.html">
-* Template code appears in <ui-view> tag
-* We can add comments
+* Inlined home template:  type="text/ng-template" id="/home.html"
+* Inlined posts template: type="text/ng-template" id="/posts.html"
+* Template code appears in ui-view tag.
+* We can add comments.
