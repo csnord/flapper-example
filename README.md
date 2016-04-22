@@ -42,3 +42,9 @@ I had not used **var app = angular.module('flapperNews', []);** but had overwrit
 * angular.module('flapperNews', []).factory ... which should now be app.factory ...
 
 ###5 - Angular Routing
+Lots here! We..
+* Added ui-router
+* Added a config()
+* Added state
+* Used **otherwise()** to redirect unspecified routes to "home.html"
+* Inlined "home.html" - code appears in <ui-view> tag
