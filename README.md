@@ -35,16 +35,17 @@ Added bootstrap from a CDN. Styled up the index.html code with bootstrap.
 ###4 - Angular Services
 Added a factory/service. Was getting:
 
-**Error: $injector:unpr Unknown Provider**
-
 I had not used **var app = angular.module('flapperNews', []);** but had overwritten things by using:
 * angular.module('flapperNews', []).controller ... which should now be app.controller ...
 * angular.module('flapperNews', []).factory ... which should now be app.factory ...
 
-###5 - Angular Routing
-Lots here! We..
-* Added ui-router
-* Added a config()
-* Added state
+###5 - Angular Routing & Posts
+Lots here, got excited and combined two "chapters"! We..
+* Added ui-router - so we can have multiple views and controllers. It is an external module, so its a dependency.
+* Added a config() - because we have added 'ui.router'.
+* Added state with $stateProvider and $urlRouterProvider.
 * Used **otherwise()** to redirect unspecified routes to "home.html"
-* Inlined "home.html" - code appears in <ui-view> tag
+* Inlined home template: <script type="text/ng-template" id="/home.html">
+* Inlined posts template: <script type="text/ng-template" id="/posts.html">
+* Template code appears in <ui-view> tag
+* We can add comments

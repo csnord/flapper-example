@@ -1,31 +1,31 @@
 // app.js
-var app = angular.module('flapperNews', ['ui.router'])
-                  .config([
-                  '$stateProvider',
-                  '$urlRouterProvider',
-                  function($stateProvider, $urlRouterProvider) {
+// We are adding an external module, so including 'ui.router' as a dependency.
+var app = angular.module('flapperNews', ['ui.router']);
 
-                    $stateProvider
-                      .state('home', {
-                        url: '/home',
-                        templateUrl: '/home.html',
-                        controller: 'MainCtrl'
-                      })
-                      .state('posts', {
-                        url: '/posts/{id}',
-                        templateUrl: '/posts.html',
-                        controller: 'PostsCtrl'
-                      });
+app.config([
+  '$stateProvider',
+  '$urlRouterProvider',
+  function($stateProvider, $urlRouterProvider) {
+    $stateProvider
+      .state('home', {               // The name of this "state".
+        url: '/home',                // This is the URL
+        templateUrl: '/home.html',   // This template is to be used
+        controller: 'MainCtrl'       // This is the assigned controller
+      })
+      .state('posts', {
+        url: '/posts/{id}',
+        templateUrl: '/posts.html',
+        controller: 'PostsCtrl'
+      });
 
-                    $urlRouterProvider.otherwise('home');
-                  }]);
+      $urlRouterProvider.otherwise('home');
+  }
+]);
 
 
 // Create a service
-app.factory('postFactory', [function(){
-  var o = {posts:[{title: 'post 1', upvotes: 5}, {title: 'post 2', upvotes: 2},  {title: 'post 3', upvotes: 15},
-                  {title: 'post 4', upvotes: 9},{title: 'post 5', upvotes: 4}]
-          };
+app.factory('posts', [function(){
+  var o = { posts:[] };
   return o;
 }]);
 
@@ -34,15 +34,24 @@ app.controller('PostsCtrl', [
   '$stateParams',
   'posts',
   function($scope, $stateParams, posts){
-
+    $scope.post = posts.posts[$stateParams.id];   //For now the index of the post is theid.
+    $scope.addComment = function(){
+      if($scope.body === '') { return; }
+      $scope.post.comments.push({
+        body: $scope.body,
+        author: 'user',
+        upvotes: 0
+      });
+      $scope.body = '';
+    };
   }
 ]);
 
 app.controller('MainCtrl', [
   '$scope',
-  'postFactory',
-  function($scope, postFactory){
-    $scope.posts = postFactory.posts;
+  'posts',                      // Here we are placing the "posts" service
+  function($scope, posts){      // into the MainCtrl controller and
+    $scope.posts = posts.posts; // we place it in scope.
     $scope.incrementUpvotes = function(post) { post.upvotes += 1; };
     $scope.addPost = function(){
       if(!$scope.title || $scope.title === '') { return; }
