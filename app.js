@@ -10,12 +10,12 @@ var app = angular.module('flapperNews', ['ui.router'])
                         url: '/home',
                         templateUrl: '/home.html',
                         controller: 'MainCtrl'
+                      })
+                      .state('posts', {
+                        url: '/posts/{id}',
+                        templateUrl: '/posts.html',
+                        controller: 'PostsCtrl'
                       });
-                      // .state('posts', {
-                      //   url: '/posts/{id}',
-                      //   templateUrl: '/posts.html',
-                      //   controller: 'PostsCtrl'
-                      // });
 
                     $urlRouterProvider.otherwise('home');
                   }]);
@@ -29,14 +29,14 @@ app.factory('postFactory', [function(){
   return o;
 }]);
 
-// app.controller('PostsCtrl', [
-//   '$scope',
-//   '$stateParams',
-//   'posts',
-//   function($scope, $stateParams, posts){
+app.controller('PostsCtrl', [
+  '$scope',
+  '$stateParams',
+  'posts',
+  function($scope, $stateParams, posts){
 
-//   }
-// ]);
+  }
+]);
 
 app.controller('MainCtrl', [
   '$scope',
